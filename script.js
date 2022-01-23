@@ -24,3 +24,9 @@ function colorGrey(e) {
 
 lista.addEventListener('click', colorGrey);
 
+
+function completed(e) {
+    e.target.classList.toggle('completed');
+}
+
+lista.addEventListener('dblclick', completed);
