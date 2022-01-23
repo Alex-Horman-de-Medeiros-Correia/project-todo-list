@@ -2,6 +2,10 @@ const botao = document.querySelector('#criar-tarefa');
 const inputt = document.querySelector('#texto-tarefa');
 const lista = document.querySelector('#lista-tarefas');
 let elementList = document.querySelector('.elementList');
+const botaoApaga = document.querySelector('#apaga-tudo');
+const botaoCompletado = document.querySelector('#remover-finalizados');
+let cssCompleted = document.querySelector('.completed');
+
 
 const addTarefa = () => {
     const criacaoElemento = document.createElement('li');
@@ -30,3 +34,22 @@ function completed(e) {
 }
 
 lista.addEventListener('dblclick', completed);
+
+function limpador() {
+    while (lista.firstChild) {
+        lista.firstChild.remove();
+    }
+}
+
+botaoApaga.addEventListener('click', limpador);
+
+
+function eraserDone() {
+    let finalizado = document.querySelectorAll('li');
+
+    for (let i = 0; i < finalizado.length; i ++) {
+        if (finalizado[i].classList.contains('completed')) {
+            finalizado[i].remove('completed');
+        }
+    }
+}
