@@ -5,6 +5,9 @@ let elementList = document.querySelector('.elementList');
 const botaoApaga = document.querySelector('#apaga-tudo');
 const botaoCompletado = document.querySelector('#remover-finalizados');
 let cssCompleted = document.querySelector('.completed');
+const salvarTarefas = document.querySelector('#salvar-tarefas');
+const removeSelecionado = document.querySelector('#remover-selecionado');
+const listraCinza = '.bgColor';
 
 
 const addTarefa = () => {
@@ -53,3 +56,23 @@ function eraserDone() {
         }
     }
 }
+
+function listaSalva() {
+    const listando = lista.innerHTML;
+    localStorage.setItem('listando', listando);
+    console.log(listando);
+}
+
+salvarTarefas.addEventListener('click', listaSalva);
+
+window.onload = function carregandoLista() {
+    console.log('carregou enfim!');
+    lista.innerHTML = localStorage.getItem('listando');
+};
+
+
+function removeSelect() {
+    document.querySelector(listraCinza).remove();
+}
+
+removeSelecionado.addEventListener('click', removeSelect);
